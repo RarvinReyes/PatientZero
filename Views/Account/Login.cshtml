@@ -1,0 +1,12 @@
+﻿@model PatientZero.Models.User
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+<form>
+    <input name="username" value="@Model.username" placeholder="Username" />
+    <input name="password" value="@Model.password" placeholder="Password" />
+</form>
