@@ -73,3 +73,7 @@ C:\Users\TOSHI\source\repos\PatientZero\obj\Debug\PatientZero.csprojAssemblyRefe
 C:\Users\TOSHI\source\repos\PatientZero\obj\Debug\PatientZero.csproj.CopyComplete
 C:\Users\TOSHI\source\repos\PatientZero\obj\Debug\PatientZero.dll
 C:\Users\TOSHI\source\repos\PatientZero\obj\Debug\PatientZero.pdb
+C:\Users\TOSHI\source\repos\PatientZero\bin\EntityFramework.dll
+C:\Users\TOSHI\source\repos\PatientZero\bin\EntityFramework.SqlServer.dll
+C:\Users\TOSHI\source\repos\PatientZero\bin\EntityFramework.xml
+C:\Users\TOSHI\source\repos\PatientZero\bin\EntityFramework.SqlServer.xml

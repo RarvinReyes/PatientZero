@@ -9,7 +9,7 @@ namespace PatientZero.Controllers {
         public ActionResult Index() {
 
             if(Request.Cookies.Get("username") == null) {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Registration", "Account");
             }
 
             return View();
