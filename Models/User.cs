@@ -18,10 +18,10 @@ namespace PatientZero.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public System.DateTime DateOfBirth { get; set; }
         public bool IsEmailVerified { get; set; }
-        public Guid ActivationCode { get; set; }
+        public System.Guid ActivationCode { get; set; }
         public string Password { get; set; }
-        public Guid Salt { get; set; }
+        public System.Guid Salt { get; set; }
     }
 }

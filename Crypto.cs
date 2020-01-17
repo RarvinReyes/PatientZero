@@ -7,18 +7,12 @@ using System.Text;
 namespace PatientZero {
     public static class Crypto {
         public static string Hash(string value, Guid salt) {
-            return Convert.ToBase64String(System.Security.Cryptography.SHA512.Create()
-                .ComputeHash(Combine(Encoding.UTF8.GetBytes(value + salt.ToString()))));
+            var sha512 = System.Security.Cryptography.SHA512.Create();
+            var hash = Convert.ToBase64String(sha512
+                .ComputeHash(Encoding.UTF8.GetBytes(value + salt.ToString())));
+            sha512.Dispose();
+            return hash;
             
-        }
-        private static byte[] Combine(params byte[][] arrays) {
-            byte[] ret = new byte[arrays.Sum(x => x.Length)];
-            int offset = 0;
-            foreach (byte[] data in arrays) {
-                Buffer.BlockCopy(data, 0, ret, offset, data.Length);
-                offset += data.Length;
-            }
-            return ret;
         }
     }
 }

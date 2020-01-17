@@ -20,7 +20,7 @@ namespace PatientZero.Controllers
         public ActionResult Registration([Bind(Exclude = "IsEmailVerified, ActivationCode, Salt")] User user) {
 
             if (ModelState.IsValid) {
-                if(isEmailExist(user.EmailAddress)) {
+                if(IsEmailExist(user.EmailAddress)) {
                     ModelState.AddModelError("EmailAddress", "Email already exist");
                     return View(user);
                 }
@@ -46,7 +46,7 @@ namespace PatientZero.Controllers
         }
 
         [NonAction]
-        private bool isEmailExist(string emailAddress) {
+        private bool IsEmailExist(string emailAddress) {
             using (DatabaseEntities db = new DatabaseEntities()) {
                 return db.Users.Where(a => a.EmailAddress == emailAddress).FirstOrDefault() != null;
             }
@@ -61,28 +61,20 @@ namespace PatientZero.Controllers
 
             var fromEmail = new MailAddress("akusoul.ar@gmail.com", "Patient Zero");
             var toEmail = new MailAddress(emailAddress, firstName + " " + lastName);
-            var fromEmailPassword = "";
             var subject = "Your account has been successfully created!";
             var body = "hello<strong> " + firstName + ",</strong><br/>" +
                 "We are excited to tell you that your account has been created. " +
                 "Please click on the link below to verify your account. <br/><br/> " +
                 "<a href = '" + link + "'>" + link + "</a>";
-            var smtp = new SmtpClient {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
-            };
-
+            using (var smtp = new SmtpClient() {
+                Timeout = 20000 
+            })
             using (var message = new MailMessage(fromEmail, toEmail) {
                 Subject = subject,
                 Body = body,
                 IsBodyHtml = true
             })
             smtp.Send(message);
-
         }
     }
 }
