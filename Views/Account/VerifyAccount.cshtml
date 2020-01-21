@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VerifyAccount</title>
+</head>
+<body>
+    <div>
+        @if (@ViewBag.Status) {
+            <div class="alert alert-success">
+                <strong>Congratulations! </strong>Your account has been verified. Please click @Html.ActionLink("here","Login", "Account") to login.
+            </div>
+        } else {
+    <div class="alert alert-danger">
+        <strong>Error. </strong>Invalid activition code.
+    </div>
+        }
+    </div>
+</body>
+</html>

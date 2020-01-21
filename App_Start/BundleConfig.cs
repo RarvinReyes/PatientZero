@@ -23,8 +23,7 @@ namespace PatientZero {
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
-                      "~/Content/bootstrap-datetimepicker.min.css",
-                      "~/Content/site.css"));
+                      "~/Content/bootstrap-datetimepicker.min.css")); 
         }
     }
 }

@@ -36,13 +36,30 @@ namespace PatientZero.Controllers
                     db.SaveChanges();
                 }
 
-                SendVerificationLinkEmail(user.EmailAddress, user.ActivationCode.ToString(), user.FirstName, user.LastName);
+                //SendVerificationLinkEmail(user.EmailAddress, user.ActivationCode.ToString(), user.FirstName, user.LastName);
                 return RedirectToAction("Home", "Index");
 
             } else {
                 ViewBag.errorMessage = "Invalid request";
                 return View(user);
             }
+        }
+
+        public ActionResult VerifyAccount(string id) {
+            using (DatabaseEntities db = new DatabaseEntities()) {
+                db.Configuration.ValidateOnSaveEnabled = false;
+                var result = db.Users
+                    .Where(a => a.ActivationCode == new Guid(id))
+                    .FirstOrDefault();
+                if(result != null) {
+                    result.IsEmailVerified = true;
+                    db.SaveChanges();
+                    ViewBag.Status = true;
+                } else {
+                    ViewBag.Status = false;
+                }
+            }
+            return View();
         }
 
         [NonAction]
@@ -66,9 +83,7 @@ namespace PatientZero.Controllers
                 "We are excited to tell you that your account has been created. " +
                 "Please click on the link below to verify your account. <br/><br/> " +
                 "<a href = '" + link + "'>" + link + "</a>";
-            using (var smtp = new SmtpClient() {
-                Timeout = 20000 
-            })
+            using (var smtp = new SmtpClient())
             using (var message = new MailMessage(fromEmail, toEmail) {
                 Subject = subject,
                 Body = body,

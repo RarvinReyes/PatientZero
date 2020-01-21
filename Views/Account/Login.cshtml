@@ -7,7 +7,7 @@
 
 <h2>Login</h2>
 @using (Html.BeginForm("Authenticate", "Account", FormMethod.Post)) {
-    <input name="username" value="@Model.username" placeholder="Username" />
-    <input name="password" value="@Model.password" placeholder="Password" />
+    <input name="username" value="@Model.EmailAddress" placeholder="Username" />
+    <input name="password" value="@Model.Password" placeholder="Password" />
     <input id="Submit1" type="submit" value="submit" />
 }

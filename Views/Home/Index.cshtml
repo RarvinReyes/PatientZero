@@ -1,31 +1,47 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model PatientZero.Models.User
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a hey free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+@section styles {
+    <link rel="stylesheet" href="~/Content/Site.css" />
+}
+<div class="overlay" id="overlay">
+    <h3>Searching now...</h3>
+</div>
+<div class="hero-bg">
+    <section class="top">
+        <header>
+            <a href="#">yummy.eats</a>
+        </header>
+
+        <h1><span>The Healthy</span> Eating Experience</h1>
+
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam esse sint error vitae laborum ratione fuga minus maiores commodi. Natus.</p>
+
+        <div class="form-container">
+            <form action="">
+                <div class="form-left">
+                    <label for="city">Enter your city:</label>
+                    <input type="text" name="city" id="city">
+                    <p>Example: "San Diego"</p>
+                </div>
+
+                <input type="button" value="Find Food Now" id="cta-btn">
+            </form>
+        </div>
+    </section>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<section class="authentic">
+    <div class="right-col">
+        <h2>Authentic. Awesome.</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, maiores reprehenderit explicabo ab ad illo eveniet enim velit, exercitationem et recusandae placeat? Maiores laboriosam libero dolore consectetur! Omnis, recusandae expedita!</p>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2621168/food.jpg" alt="Picture of food in a bowl">
+</section>
+@section scripts {
+    <script src="~/Scripts/custom-script.js" hidden></script>
+    }
